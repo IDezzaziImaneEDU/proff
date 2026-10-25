@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cours d'informatique, leçons et exercices proposés par Prof Imane Dezzazi.">
+  <title>Prof Imane Dezzazi | Cours d'informatique</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --dark: #172554;
+      --bg: #f4f7fc;
+      --muted: #64748b;
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #1e293b;
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    .container { width: min(1100px, 92%); margin: auto; }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .brand span { color: var(--primary); }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .hero {
+      background: linear-gradient(135deg, #172554, #2563eb);
+      color: white;
+      padding: 76px 0;
+    }
+
+    .hero-content { max-width: 720px; }
+
+    .eyebrow {
+      display: inline-block;
+      background: #ffffff20;
+      border: 1px solid #ffffff45;
+      padding: 6px 13px;
+      border-radius: 30px;
+      font-size: 13px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.15;
+      margin: 20px 0;
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: #dbeafe;
+      max-width: 600px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: white;
+      color: var(--primary);
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 16px;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: -28px;
+      position: relative;
+    }
+
+    .stat {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px #1725540d;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 25px;
+      color: var(--primary);
+    }
+
+    .stat span { font-size: 13px; color: var(--muted); }
+
+    section { padding: 55px 0; }
+
+    .section-head { margin-bottom: 25px; }
+    .section-head h2 { margin: 0 0 8px; font-size: 29px; color: var(--dark); }
+    .section-head p { margin: 0; color: var(--muted); }
+
+    .filters {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    input, select {
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      background: white;
+      font: inherit;
+      min-width: 0;
+    }
+
+    #search { flex: 1; min-width: 220px; }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .course {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      transition: .2s;
+    }
+
+    .course:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px #17255412;
+    }
+
+    .course-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: #eff6ff;
+      font-size: 25px;
+    }
+
+    .tag {
+      display: inline-block;
+      align-self: flex-start;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-size: 12px;
+      padding: 4px 9px;
+      border-radius: 20px;
+      margin-top: 15px;
+    }
+
+    .course h3 { margin: 10px 0 5px; font-size: 18px; }
+    .course p { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+    .course button {
+      margin-top: auto;
+      border: 0;
+      background: var(--primary);
+      color: white;
+      padding: 11px;
+      border-radius: 8px;
+      font: inherit;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .course button:hover { background: #1d4ed8; }
+
+    .empty {
+      grid-column: 1 / -1;
+      background: white;
+      padding: 30px;
+      text-align: center;
+      border-radius: 12px;
+      color: var(--muted);
+    }
+
+    .about-box {
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+    }
+
+    footer {
+      background: var(--dark);
+      color: #dbeafe;
+      text-align: center;
+      padding: 28px 12px;
+      font-size: 14px;
+    }
+
+    footer strong { color: white; }
+
+    dialog {
+      width: min(650px, 92%);
+      max-height: 85vh;
+      overflow: auto;
+      border: 0;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 20px 70px #0003;
+    }
+
+    dialog::backdrop { background: #0f172a99; }
+    dialog h2 { color: var(--dark); }
+    .lesson-content { white-space: pre-line; }
+    .close-btn {
+      background: var(--dark);
+      color: white;
+      border: 0;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 760px) {
+      .course-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav-links { gap: 12px; font-size: 12px; }
+      .brand { font-size: 16px; }
+      .hero { padding: 55px 0; }
+    }
+
+    @media (max-width: 500px) {
+      .course-grid { grid-template-columns: 1fr; }
+      .stats { gap: 8px; }
+      .stat { padding: 12px 5px; }
+      .stat strong { font-size: 20px; }
+      .stat span { font-size: 11px; }
+      .nav-links a:nth-child(2) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="container">
+    <a class="brand" href="#"><span>Prof</span> Imane Dezzazi</a>
+    <div class="nav-links">
+      <a href="#accueil">Accueil</a>
+      <a href="#cours">Les cours</a>
+      <a href="#apropos">À propos</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="accueil">
+    <div class="container hero-content">
+      <span class="eyebrow">Plateforme pédagogique</span>
+      <h1>Apprendre l'informatique devient plus simple.</h1>
+      <p>
+        Bienvenue sur mon espace pédagogique. Retrouvez des cours,
+        des leçons et des exercices pour progresser en informatique
+        à votre rythme.
+      </p>
+      <a class="btn" href="#cours">Découvrir les cours →</a>
+    </div>
+  </section>
+
+  <div class="container stats">
+    <div class="stat">
+      <strong id="courseCount">6</strong>
+      <span>Ressources pédagogiques</span>
+    </div>
+    <div class="stat">
+      <strong>100%</strong>
+      <span>Accès gratuit</span>
+    </div>
+    <div class="stat">
+      <strong>24h/24</strong>
+      <span>Apprentissage libre</span>
+    </div>
+  </div>
+
+  <section id="cours">
+    <div class="container">
+      <div class="section-head">
+        <h2>📚 Nos cours</h2>
+        <p>Choisissez un niveau et découvrez les ressources disponibles.</p>
+      </div>
+
+      <div class="filters">
+        <input id="search" type="search"
+          placeholder="Rechercher un cours..."
+          aria-label="Rechercher un cours">
+
+        <select id="level" aria-label="Filtrer par niveau">
+          <option value="all">Tous les niveaux</option>
+          <option value="1AC">1ère année collège</option>
+          <option value="2AC">2ème année collège</option>
+          <option value="3AC">3ème année collège</option>
+        </select>
+      </div>
+
+      <div class="course-grid" id="courseGrid"></div>
+    </div>
+  </section>
+
+  <section id="apropos">
+    <div class="container">
+      <div class="section-head">
+        <h2>À propos de la plateforme</h2>
+        <p>Un espace pour apprendre, comprendre et pratiquer.</p>
+      </div>
+      <div class="about-box">
+        <h3>Prof Imane Dezzazi</h3>
+        <p>
+          Cette plateforme a pour objectif de faciliter l'apprentissage
+          de l'informatique grâce à des ressources organisées par niveau.
+          Les élèves peuvent consulter les thèmes proposés et réviser
+          les notions essentielles.
+        </p>
+        <p>De nouvelles leçons et activités pourront être ajoutées régulièrement.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <strong>Prof Imane Dezzazi</strong>
+  <p>Plateforme de cours d'informatique</p>
+  <span>© <span id="year"></span> — Tous droits réservés.</span>
+</footer>
+
+<dialog id="lessonDialog">
+  <h2 id="lessonTitle"></h2>
+  <p id="lessonLevel" class="tag"></p>
+  <div id="lessonContent" class="lesson-content"></div>
+  <br>
+  <button class="close-btn" id="closeDialog">Fermer</button>
+</dialog>
+
+<script>
+  // Remplacez les exemples par vos véritables cours.
+  const courses = [
+    {
+      title: "Découverte de l'ordinateur",
+      level: "1AC",
+      icon: "🖥️",
+      description: "Introduction aux composants et au fonctionnement.",
+      content: "Objectifs :\n- Identifier les composants d'un ordinateur.\n- Distinguer les périphériques d'entrée et de sortie.\n- Comprendre le rôle du processeur et de la mémoire.\n\nÀ compléter avec votre leçon et vos exercices."
+    },
+    {
+      title: "Système d'exploitation",
+      level: "1AC",
+      icon: "⚙️",
+      description: "Découvrir le système et gérer les fichiers.",
+      content: "Objectifs :\n- Comprendre le rôle d'un système d'exploitation.\n- Organiser les fichiers et les dossiers.\n- Utiliser les fonctions essentielles du système.\n\nÀ compléter avec votre cours."
+    },
+    {
+      title: "Traitement de texte",
+      level: "2AC",
+      icon: "📝",
+      description: "Créer et mettre en forme un document.",
+      content: "Objectifs :\n- Saisir et modifier un texte.\n- Mettre en forme les paragraphes.\n- Insérer des images et des tableaux.\n- Enregistrer et imprimer un document.\n\nÀ compléter avec votre leçon et vos activités."
+    },
+    {
+      title: "Tableur",
+      level: "2AC",
+      icon: "📊",
+      description: "Organiser les données et découvrir les formules.",
+      content: "Objectifs :\n- Identifier les cellules, lignes et colonnes.\n- Saisir et organiser des données.\n- Utiliser des formules simples.\n- Créer un graphique.\n\nÀ compléter avec vos exercices."
+    },
+    {
+      title: "Algorithmique",
+      level: "3AC",
+      icon: "🧩",
+      description: "Comprendre les algorithmes et les instructions.",
+      content: "Objectifs :\n- Comprendre la notion d'algorithme.\n- Identifier les entrées et les sorties.\n- Utiliser les instructions et les conditions.\n- Résoudre un problème étape par étape.\n\nÀ compléter avec votre cours."
+    },
+    {
+      title: "Programmation et Web",
+      level: "3AC",
+      icon: "💻",
+      description: "Premiers pas en programmation et création Web.",
+      content: "Objectifs :\n- Découvrir les bases de la programmation.\n- Comprendre la structure d'une page HTML.\n- Découvrir le rôle du CSS.\n- Réaliser une petite page Web.\n\nÀ compléter avec vos leçons et activités."
+    }
+  ];
+
+  const labels = {
+    "1AC": "1ère année collège",
+    "2AC": "2ème année collège",
+    "3AC": "3ème année collège"
+  };
+
+  const grid = document.getElementById("courseGrid");
+  const search = document.getElementById("search");
+  const level = document.getElementById("level");
+  const dialog = document.getElementById("lessonDialog");
+
+  function renderCourses() {
+    const term = search.value.trim().toLowerCase();
+    const selectedLevel = level.value;
+
+    const filtered = courses.filter(course =>
+      (course.title + " " + course.description + " " +
+        labels[course.level]).toLowerCase().includes(term) &&
+      (selectedLevel === "all" || course.level === selectedLevel)
+    );
+
+    document.getElementById("courseCount").textContent = courses.length;
+
+    if (!filtered.length) {
+      grid.innerHTML = '<div class="empty">Aucun cours trouvé. Essayez une autre recherche.</div>';
+      return;
+    }
+
+    grid.innerHTML = filtered.map(course => {
+      const index = courses.indexOf(course);
+      return `
+        <article class="course">
+          <div class="course-icon" aria-hidden="true">${course.icon}</div>
+          <span class="tag">${labels[course.level]}</span>
+          <h3>${course.title}</h3>
+          <p>${course.description}</p>
+          <button type="button" data-index="${index}">
+            Consulter le cours →
+          </button>
+        </article>`;
+    }).join("");
+  }
+
+  grid.addEventListener("click", event => {
+    const button = event.target.closest("button[data-index]");
+    if (!button) return;
+
+    const course = courses[Number(button.dataset.index)];
+    document.getElementById("lessonTitle").textContent = course.title;
+    document.getElementById("lessonLevel").textContent = labels[course.level];
+    document.getElementById("lessonContent").textContent = course.content;
+    dialog.showModal();
+  });
+
+  document.getElementById("closeDialog").addEventListener("click", () => {
+    dialog.close();
+  });
+
+  search.addEventListener("input", renderCourses);
+  level.addEventListener("change", renderCourses);
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  renderCourses();
+</script>
+</body>
+</html>
