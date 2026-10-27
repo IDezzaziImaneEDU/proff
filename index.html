@@ -1,490 +1,340 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Cours d'informatique, leçons et exercices proposés par Prof Imane Dezzazi.">
-  <title>Prof Imane Dezzazi | Cours d'informatique</title>
-  <style>
-    :root {
-      --primary: #2563eb;
-      --dark: #172554;
-      --bg: #f4f7fc;
-      --muted: #64748b;
-      --white: #fff;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cours et exercices d'informatique pour la 2ème année collège. Professeure Imane Dezzazi.">
+<title>Espace Informatique | Imane Dezzazi</title>
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #1e293b;
-      background: var(--bg);
-      line-height: 1.6;
-    }
+<style>
+* { box-sizing: border-box; }
 
-    a { text-decoration: none; color: inherit; }
-    .container { width: min(1100px, 92%); margin: auto; }
+:root {
+  --navy: #082d67;
+  --blue: #0878ed;
+  --bg: #f1f8ff;
+}
 
-    header {
-      background: var(--white);
-      border-bottom: 1px solid #e2e8f0;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--navy);
+  background: var(--bg);
+}
 
-    nav {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
+nav {
+  background: var(--navy);
+  color: white;
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
 
-    .brand {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--dark);
-    }
+.brand {
+  font-size: 23px;
+  font-weight: bold;
+}
 
-    .brand span { color: var(--primary); }
+.brand small {
+  display: block;
+  font-size: 13px;
+  font-weight: normal;
+  margin-top: 5px;
+}
 
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      align-items: center;
-      font-size: 14px;
-      font-weight: 600;
-    }
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 5px;
+  font-size: 14px;
+}
 
-    .nav-links a:hover { color: var(--primary); }
+.hero {
+  padding: 45px 6%;
+  background: linear-gradient(120deg, #d9f1ff, #fff 60%, #bce8ff);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 30px;
+  flex-wrap: wrap;
+  text-align: center;
+}
 
-    .hero {
-      background: linear-gradient(135deg, #172554, #2563eb);
-      color: white;
-      padding: 76px 0;
-    }
+.hero-art {
+  font-size: 90px;
+  flex: 1;
+  min-width: 220px;
+}
 
-    .hero-content { max-width: 720px; }
+.hero-text {
+  flex: 1.3;
+  min-width: 260px;
+}
 
-    .eyebrow {
-      display: inline-block;
-      background: #ffffff20;
-      border: 1px solid #ffffff45;
-      padding: 6px 13px;
-      border-radius: 30px;
-      font-size: 13px;
-    }
+.hero h1 {
+  font-size: clamp(30px, 5vw, 48px);
+  margin: 0 0 12px;
+}
 
-    h1 {
-      font-size: clamp(32px, 5vw, 52px);
-      line-height: 1.15;
-      margin: 20px 0;
-    }
+.hero h1 span { color: var(--blue); }
 
-    .hero p {
-      font-size: 17px;
-      color: #dbeafe;
-      max-width: 600px;
-    }
+.hero p {
+  font-size: 19px;
+  line-height: 1.7;
+}
 
-    .btn {
-      display: inline-block;
-      background: white;
-      color: var(--primary);
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-weight: bold;
-      margin-top: 16px;
-    }
+.teacher {
+  display: inline-block;
+  background: #ffdc65;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+}
 
-    .btn:hover { transform: translateY(-2px); }
+main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 20px;
+}
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: -28px;
-      position: relative;
-    }
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-    .stat {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 8px 25px #1725540d;
-      text-align: center;
-    }
+.section-title h2 {
+  font-size: clamp(24px, 4vw, 34px);
+}
 
-    .stat strong {
-      display: block;
-      font-size: 25px;
-      color: var(--primary);
-    }
+.section-title p { color: #45638c; }
 
-    .stat span { font-size: 13px; color: var(--muted); }
+.units {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
 
-    section { padding: 55px 0; }
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 20px 16px;
+  box-shadow: 0 5px 18px #0b4e8520;
+  border-bottom: 5px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  min-width: 0;
+}
 
-    .section-head { margin-bottom: 25px; }
-    .section-head h2 { margin: 0 0 8px; font-size: 29px; color: var(--dark); }
-    .section-head p { margin: 0; color: var(--muted); }
+.number {
+  align-self: flex-start;
+  background: var(--accent);
+  color: white;
+  border-radius: 25px;
+  padding: 6px 16px;
+  font-weight: bold;
+}
 
-    .filters {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
+.illustration {
+  font-size: 65px;
+  padding: 12px 0;
+  background: var(--pale);
+  border-radius: 50%;
+  margin: 12px 0;
+}
 
-    input, select {
-      padding: 12px 14px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      background: white;
-      font: inherit;
-      min-width: 0;
-    }
+.card h3 {
+  font-size: 19px;
+  line-height: 1.4;
+  min-height: 54px;
+}
 
-    #search { flex: 1; min-width: 220px; }
+.card p {
+  color: #405777;
+  line-height: 1.65;
+  font-size: 14px;
+  flex-grow: 1;
+}
 
-    .course-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
+.btn {
+  display: block;
+  background: var(--accent);
+  color: white;
+  padding: 12px 8px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 12px;
+  transition: transform .2s, opacity .2s;
+}
 
-    .course {
-      background: white;
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      transition: .2s;
-    }
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: .88;
+}
 
-    .course:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 28px #17255412;
-    }
+.features {
+  margin-top: 30px;
+  padding: 22px;
+  background: #dcefff;
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  text-align: center;
+}
 
-    .course-icon {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: #eff6ff;
-      font-size: 25px;
-    }
+.features div { line-height: 1.6; }
 
-    .tag {
-      display: inline-block;
-      align-self: flex-start;
-      background: #dbeafe;
-      color: #1d4ed8;
-      font-size: 12px;
-      padding: 4px 9px;
-      border-radius: 20px;
-      margin-top: 15px;
-    }
+footer {
+  background: var(--navy);
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+  line-height: 1.8;
+}
 
-    .course h3 { margin: 10px 0 5px; font-size: 18px; }
-    .course p { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+footer a {
+  color: #91d7ff;
+  margin: 0 7px;
+}
 
-    .course button {
-      margin-top: auto;
-      border: 0;
-      background: var(--primary);
-      color: white;
-      padding: 11px;
-      border-radius: 8px;
-      font: inherit;
-      font-weight: bold;
-      cursor: pointer;
-    }
+@media (max-width: 850px) {
+  .units { grid-template-columns: repeat(2, 1fr); }
+  .features { grid-template-columns: repeat(2, 1fr); }
+}
 
-    .course button:hover { background: #1d4ed8; }
-
-    .empty {
-      grid-column: 1 / -1;
-      background: white;
-      padding: 30px;
-      text-align: center;
-      border-radius: 12px;
-      color: var(--muted);
-    }
-
-    .about-box {
-      background: white;
-      padding: 30px;
-      border-radius: 14px;
-      border: 1px solid #e2e8f0;
-    }
-
-    footer {
-      background: var(--dark);
-      color: #dbeafe;
-      text-align: center;
-      padding: 28px 12px;
-      font-size: 14px;
-    }
-
-    footer strong { color: white; }
-
-    dialog {
-      width: min(650px, 92%);
-      max-height: 85vh;
-      overflow: auto;
-      border: 0;
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: 0 20px 70px #0003;
-    }
-
-    dialog::backdrop { background: #0f172a99; }
-    dialog h2 { color: var(--dark); }
-    .lesson-content { white-space: pre-line; }
-    .close-btn {
-      background: var(--dark);
-      color: white;
-      border: 0;
-      padding: 10px 18px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    @media (max-width: 760px) {
-      .course-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .nav-links { gap: 12px; font-size: 12px; }
-      .brand { font-size: 16px; }
-      .hero { padding: 55px 0; }
-    }
-
-    @media (max-width: 500px) {
-      .course-grid { grid-template-columns: 1fr; }
-      .stats { gap: 8px; }
-      .stat { padding: 12px 5px; }
-      .stat strong { font-size: 20px; }
-      .stat span { font-size: 11px; }
-      .nav-links a:nth-child(2) { display: none; }
-    }
-  </style>
+@media (max-width: 480px) {
+  nav { justify-content: center; text-align: center; }
+  .brand { width: 100%; }
+  .units { grid-template-columns: 1fr; }
+  .hero { padding: 30px 16px; }
+  .hero-art { font-size: 65px; }
+  .features { grid-template-columns: 1fr 1fr; }
+  .card h3 { min-height: auto; }
+}
+</style>
 </head>
+
 <body>
 
-<header>
-  <nav class="container">
-    <a class="brand" href="#"><span>Prof</span> Imane Dezzazi</a>
-    <div class="nav-links">
-      <a href="#accueil">Accueil</a>
-      <a href="#cours">Les cours</a>
-      <a href="#apropos">À propos</a>
-    </div>
-  </nav>
+<nav>
+  <div class="brand">
+    💻 Espace Informatique
+    <small>2ème année collège</small>
+  </div>
+  <div>
+    <a href="#accueil">Accueil</a>
+    <a href="#unites">Les unités</a>
+    <a href="#apropos">À propos</a>
+  </div>
+</nav>
+
+<header class="hero" id="accueil">
+  <div class="hero-art" aria-hidden="true">💻 📚</div>
+  <div class="hero-text">
+    <h1>Bienvenue sur<br><span>Espace Informatique</span></h1>
+    <p>Cours et exercices de la 2ème année collège</p>
+    <div class="teacher">👩‍🏫 Professeure Imane Dezzazi</div>
+    <p>Apprendre · S'entraîner · Réussir</p>
+  </div>
 </header>
 
 <main>
-  <section class="hero" id="accueil">
-    <div class="container hero-content">
-      <span class="eyebrow">Plateforme pédagogique</span>
-      <h1>Apprendre l'informatique devient plus simple.</h1>
-      <p>
-        Bienvenue sur mon espace pédagogique. Retrouvez des cours,
-        des leçons et des exercices pour progresser en informatique
-        à votre rythme.
-      </p>
-      <a class="btn" href="#cours">Découvrir les cours →</a>
+  <section id="unites">
+    <div class="section-title">
+      <h2>📘 Les unités du premier trimestre</h2>
+      <p>Découvrez les cours, faites les exercices et progressez à votre rythme.</p>
     </div>
-  </section>
 
-  <div class="container stats">
-    <div class="stat">
-      <strong id="courseCount">6</strong>
-      <span>Ressources pédagogiques</span>
-    </div>
-    <div class="stat">
-      <strong>100%</strong>
-      <span>Accès gratuit</span>
-    </div>
-    <div class="stat">
-      <strong>24h/24</strong>
-      <span>Apprentissage libre</span>
-    </div>
-  </div>
+    <div class="units">
 
-  <section id="cours">
-    <div class="container">
-      <div class="section-head">
-        <h2>📚 Nos cours</h2>
-        <p>Choisissez un niveau et découvrez les ressources disponibles.</p>
-      </div>
-
-      <div class="filters">
-        <input id="search" type="search"
-          placeholder="Rechercher un cours..."
-          aria-label="Rechercher un cours">
-
-        <select id="level" aria-label="Filtrer par niveau">
-          <option value="all">Tous les niveaux</option>
-          <option value="1AC">1ère année collège</option>
-          <option value="2AC">2ème année collège</option>
-          <option value="3AC">3ème année collège</option>
-        </select>
-      </div>
-
-      <div class="course-grid" id="courseGrid"></div>
-    </div>
-  </section>
-
-  <section id="apropos">
-    <div class="container">
-      <div class="section-head">
-        <h2>À propos de la plateforme</h2>
-        <p>Un espace pour apprendre, comprendre et pratiquer.</p>
-      </div>
-      <div class="about-box">
-        <h3>Prof Imane Dezzazi</h3>
+      <article class="card"
+        style="--accent:#7139d0;--pale:#f0e7ff">
+        <span class="number">Unité 1</span>
+        <div class="illustration">🖥️</div>
+        <h3>Environnement matériel</h3>
         <p>
-          Cette plateforme a pour objectif de faciliter l'apprentissage
-          de l'informatique grâce à des ressources organisées par niveau.
-          Les élèves peuvent consulter les thèmes proposés et réviser
-          les notions essentielles.
+          Composants de l'ordinateur, périphériques,
+          ports, unités de mesure, systèmes
+          d'exploitation et réseaux.
         </p>
-        <p>De nouvelles leçons et activités pourront être ajoutées régulièrement.</p>
-      </div>
+        <a class="btn" href="https://tabdellah.github.io/u1/"
+           target="_blank" rel="noopener noreferrer">
+          📖 Cours et exercices →
+        </a>
+      </article>
+
+      <article class="card"
+        style="--accent:#009765;--pale:#dcf8e9">
+        <span class="number">Unité 2</span>
+        <div class="illustration">🌐</div>
+        <h3>Échange d'informations via réseau local</h3>
+        <p>
+          Adresse IP, partage de fichiers et de dossiers,
+          communication sur le réseau local.
+        </p>
+        <a class="btn" href="https://tabdellah.github.io/u2/"
+           target="_blank" rel="noopener noreferrer">
+          📖 Cours et exercices →
+        </a>
+      </article>
+
+      <article class="card"
+        style="--accent:#0878ed;--pale:#e0f2ff">
+        <span class="number">Unité 3</span>
+        <div class="illustration">📊</div>
+        <h3>Tableur (Excel)</h3>
+        <p>
+          Création de tableaux, formules de calcul,
+          fonctions, tri et analyse des données.
+        </p>
+        <a class="btn" href="https://tabdellah.github.io/u3/"
+           target="_blank" rel="noopener noreferrer">
+          📖 Cours et exercices →
+        </a>
+      </article>
+
+      <article class="card"
+        style="--accent:#f47700;--pale:#fff0dc">
+        <span class="number">Unité 4</span>
+        <div class="illustration">🐢</div>
+        <h3>Programmation LOGO</h3>
+        <p>
+          Découverte de la programmation, commandes
+          de la tortue, figures géométriques,
+          couleurs et réalisation d'applications.
+        </p>
+        <a class="btn" href="https://tabdellah.github.io/u4/"
+           target="_blank" rel="noopener noreferrer">
+          📖 Cours et exercices →
+        </a>
+      </article>
+
     </div>
+  </section>
+
+  <section class="features">
+    <div>🎯<br><strong>Apprendre par la pratique</strong></div>
+    <div>⭐<br><strong>Des exercices progressifs</strong></div>
+    <div>⚙️<br><strong>Maîtriser les compétences</strong></div>
+    <div>📈<br><strong>Vers la réussite</strong></div>
   </section>
 </main>
 
-<footer>
-  <strong>Prof Imane Dezzazi</strong>
-  <p>Plateforme de cours d'informatique</p>
-  <span>© <span id="year"></span> — Tous droits réservés.</span>
+<footer id="apropos">
+  <strong>Espace Informatique</strong> — 2ème année collège
+  <br>
+  Préparé par Professeure Imane Dezzazi
+  <p>Ensemble vers la réussite !</p>
+  <a href="https://tabdellah.github.io/u1/">Unité 1</a>
+  <a href="https://tabdellah.github.io/u2/">Unité 2</a>
+  <a href="https://tabdellah.github.io/u3/">Unité 3</a>
+  <a href="https://tabdellah.github.io/u4/">Unité 4</a>
 </footer>
 
-<dialog id="lessonDialog">
-  <h2 id="lessonTitle"></h2>
-  <p id="lessonLevel" class="tag"></p>
-  <div id="lessonContent" class="lesson-content"></div>
-  <br>
-  <button class="close-btn" id="closeDialog">Fermer</button>
-</dialog>
-
-<script>
-  // Remplacez les exemples par vos véritables cours.
-  const courses = [
-    {
-      title: "Découverte de l'ordinateur",
-      level: "1AC",
-      icon: "🖥️",
-      description: "Introduction aux composants et au fonctionnement.",
-      content: "Objectifs :\n- Identifier les composants d'un ordinateur.\n- Distinguer les périphériques d'entrée et de sortie.\n- Comprendre le rôle du processeur et de la mémoire.\n\nÀ compléter avec votre leçon et vos exercices."
-    },
-    {
-      title: "Système d'exploitation",
-      level: "1AC",
-      icon: "⚙️",
-      description: "Découvrir le système et gérer les fichiers.",
-      content: "Objectifs :\n- Comprendre le rôle d'un système d'exploitation.\n- Organiser les fichiers et les dossiers.\n- Utiliser les fonctions essentielles du système.\n\nÀ compléter avec votre cours."
-    },
-    {
-      title: "Traitement de texte",
-      level: "2AC",
-      icon: "📝",
-      description: "Créer et mettre en forme un document.",
-      content: "Objectifs :\n- Saisir et modifier un texte.\n- Mettre en forme les paragraphes.\n- Insérer des images et des tableaux.\n- Enregistrer et imprimer un document.\n\nÀ compléter avec votre leçon et vos activités."
-    },
-    {
-      title: "Tableur",
-      level: "2AC",
-      icon: "📊",
-      description: "Organiser les données et découvrir les formules.",
-      content: "Objectifs :\n- Identifier les cellules, lignes et colonnes.\n- Saisir et organiser des données.\n- Utiliser des formules simples.\n- Créer un graphique.\n\nÀ compléter avec vos exercices."
-    },
-    {
-      title: "Algorithmique",
-      level: "3AC",
-      icon: "🧩",
-      description: "Comprendre les algorithmes et les instructions.",
-      content: "Objectifs :\n- Comprendre la notion d'algorithme.\n- Identifier les entrées et les sorties.\n- Utiliser les instructions et les conditions.\n- Résoudre un problème étape par étape.\n\nÀ compléter avec votre cours."
-    },
-    {
-      title: "Programmation et Web",
-      level: "3AC",
-      icon: "💻",
-      description: "Premiers pas en programmation et création Web.",
-      content: "Objectifs :\n- Découvrir les bases de la programmation.\n- Comprendre la structure d'une page HTML.\n- Découvrir le rôle du CSS.\n- Réaliser une petite page Web.\n\nÀ compléter avec vos leçons et activités."
-    }
-  ];
-
-  const labels = {
-    "1AC": "1ère année collège",
-    "2AC": "2ème année collège",
-    "3AC": "3ème année collège"
-  };
-
-  const grid = document.getElementById("courseGrid");
-  const search = document.getElementById("search");
-  const level = document.getElementById("level");
-  const dialog = document.getElementById("lessonDialog");
-
-  function renderCourses() {
-    const term = search.value.trim().toLowerCase();
-    const selectedLevel = level.value;
-
-    const filtered = courses.filter(course =>
-      (course.title + " " + course.description + " " +
-        labels[course.level]).toLowerCase().includes(term) &&
-      (selectedLevel === "all" || course.level === selectedLevel)
-    );
-
-    document.getElementById("courseCount").textContent = courses.length;
-
-    if (!filtered.length) {
-      grid.innerHTML = '<div class="empty">Aucun cours trouvé. Essayez une autre recherche.</div>';
-      return;
-    }
-
-    grid.innerHTML = filtered.map(course => {
-      const index = courses.indexOf(course);
-      return `
-        <article class="course">
-          <div class="course-icon" aria-hidden="true">${course.icon}</div>
-          <span class="tag">${labels[course.level]}</span>
-          <h3>${course.title}</h3>
-          <p>${course.description}</p>
-          <button type="button" data-index="${index}">
-            Consulter le cours →
-          </button>
-        </article>`;
-    }).join("");
-  }
-
-  grid.addEventListener("click", event => {
-    const button = event.target.closest("button[data-index]");
-    if (!button) return;
-
-    const course = courses[Number(button.dataset.index)];
-    document.getElementById("lessonTitle").textContent = course.title;
-    document.getElementById("lessonLevel").textContent = labels[course.level];
-    document.getElementById("lessonContent").textContent = course.content;
-    dialog.showModal();
-  });
-
-  document.getElementById("closeDialog").addEventListener("click", () => {
-    dialog.close();
-  });
-
-  search.addEventListener("input", renderCourses);
-  level.addEventListener("change", renderCourses);
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  renderCourses();
-</script>
 </body>
 </html>
